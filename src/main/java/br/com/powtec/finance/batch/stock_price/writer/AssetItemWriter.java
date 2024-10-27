@@ -4,7 +4,7 @@ import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.powtec.finance.batch.stock_price.model.AssetModel;
+import br.com.powtec.finance.database.library.model.AssetModel;
 import jakarta.persistence.EntityManagerFactory;
 
 @Configuration

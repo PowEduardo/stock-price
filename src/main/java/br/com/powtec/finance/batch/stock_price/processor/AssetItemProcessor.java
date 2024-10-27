@@ -8,7 +8,7 @@ import org.jsoup.nodes.Element;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import br.com.powtec.finance.batch.stock_price.model.AssetModel;
+import br.com.powtec.finance.database.library.model.AssetModel;
 
 @Configuration
 public class AssetItemProcessor {

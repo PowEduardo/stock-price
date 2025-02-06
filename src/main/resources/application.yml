@@ -15,5 +15,3 @@ spring:
     username: finance_user
     password: 123456
     driverClassName: org.postgresql.Driver
-    hikari:
-      schema: public

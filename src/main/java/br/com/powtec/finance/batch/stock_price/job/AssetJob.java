@@ -35,7 +35,7 @@ public class AssetJob {
 
   @Bean
   public Job assetPrice(JobRepository jobRepository, Step step1) {
-    return new JobBuilder("AssetJobPrice", jobRepository)
+    return new JobBuilder("StockPrice", jobRepository)
         .start(step1)
         .build();
   }

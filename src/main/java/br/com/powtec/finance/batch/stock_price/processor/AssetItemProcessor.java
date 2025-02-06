@@ -9,17 +9,18 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import br.com.powtec.finance.database.library.model.AssetModel;
+import lombok.extern.log4j.Log4j2;
 
 @Configuration
+@Log4j2
 public class AssetItemProcessor {
 
   @Bean
   public ItemProcessor<AssetModel, AssetModel> processor() {
     return asset -> {
       try {
-        // URL para a página da ação SANB4 no Google Finance
+        // URL para a página de ações no Google Finance
         String url = "https://www.google.com/finance/quote/{ticker}:BVMF".replace("{ticker}", asset.getTicker());
-
         // Conectar e obter o documento HTML
         Document doc = Jsoup.connect(url).get();
 

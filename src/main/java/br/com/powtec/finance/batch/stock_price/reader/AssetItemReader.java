@@ -13,7 +13,7 @@ public class AssetItemReader {
   public JpaPagingItemReader<AssetModel> reader(EntityManagerFactory entityManagerFactory) {
     JpaPagingItemReader<AssetModel> reader = new JpaPagingItemReader<>();
     reader.setEntityManagerFactory(entityManagerFactory);
-    reader.setQueryString("SELECT asset FROM AssetModel AS asset");
+    reader.setQueryString("SELECT asset FROM AssetModel AS asset WHERE asset.type IN (AssetTypeEnum.STOCK, AssetTypeEnum.REIT)"); // Define a consulta para buscar os registros
     reader.setPageSize(10); // Define o tamanho da página, leia 10 registros por vez
     reader.setName("AssetReader");
     return reader;

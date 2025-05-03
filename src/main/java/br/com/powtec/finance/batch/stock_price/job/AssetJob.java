@@ -11,6 +11,7 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import br.com.powtec.finance.database.library.model.AssetModel;
@@ -30,7 +31,14 @@ public class AssetJob {
         .reader(reader)
         .processor(processor)
         .writer(writer)
+        .taskExecutor(createTaskExecutor()) // Enable multi-threading with concurrency limit
         .build();
+  }
+
+  private SimpleAsyncTaskExecutor createTaskExecutor() {
+    SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
+    taskExecutor.setConcurrencyLimit(4);
+    return taskExecutor;
   }
 
   @Bean

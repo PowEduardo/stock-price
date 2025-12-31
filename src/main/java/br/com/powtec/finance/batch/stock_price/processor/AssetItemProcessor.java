@@ -1,6 +1,7 @@
 package br.com.powtec.finance.batch.stock_price.processor;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,7 +30,7 @@ public class AssetItemProcessor {
         if (priceElement != null) {
           String stockPrice = priceElement.text();
           System.out.printf("O valor atual da ação %s é: %s\n", asset.getTicker(), stockPrice);
-          asset.setValue(Double.parseDouble(stockPrice.replace("R$", "")));
+          asset.setValue(BigDecimal.valueOf(Double.parseDouble(stockPrice.replace("R$", "").replace(",", "."))));
         } else {
           System.out.printf("Não foi possível encontrar a cotação da ação: %s\n", asset.getTicker());
         }
